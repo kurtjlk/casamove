@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <filter>
+        <filter-name>Filtro de conexoes</filter-name>
+        <filter-class>filter.FiltroDeConexaoBanco</filter-class>
+    </filter>
+    <filter>
+        <filter-name>Filtro verificador de JavaScript</filter-name>
+        <filter-class>filter.FiltroDeVerificaoDeJavaScript</filter-class>
+    </filter>
+    <servlet>
+        <servlet-name>Controlador de Cadastro de Usuário</servlet-name>
+        <servlet-class>control.CadastroUsuarioController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controlador de Autenticação</servlet-name>
+        <servlet-class>control.AutenticacaoController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletGeral</servlet-name>
+        <servlet-class>control.ServletGeral</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Caneichon</servlet-name>
+        <servlet-class>control.command.NovoItem</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Página de novos</servlet-name>
+        <servlet-class>control.command.Novos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Detalhes</servlet-name>
+        <servlet-class>control.command.DetalhesProduto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controlador de Mensagens</servlet-name>
+        <servlet-class>control.command.MensagemContato</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Detalhes da empresa</servlet-name>
+        <servlet-class>control.command.DetalhesEmpresa</servlet-class>
+    </servlet>
+    <servlet>
+        <description>Servlet que faz a busca por palavra pesquisada</description>
+        <servlet-name>busca</servlet-name>
+        <servlet-class>control.command.Busca</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Responder mensagem</servlet-name>
+        <servlet-class>control.command.ResponderMensagem</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Enviar email para cliente</servlet-name>
+        <servlet-class>control.command.EnviarEmail</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Controlador de Cadastro de Usuário</servlet-name>
+        <url-pattern>/cadastro</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controlador de Autenticação</servlet-name>
+        <url-pattern>/autenticacao</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletGeral</servlet-name>
+        <url-pattern>/geral</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Caneichon</servlet-name>
+        <url-pattern>/upload</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Página de novos</servlet-name>
+        <url-pattern>/novos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Detalhes</servlet-name>
+        <url-pattern>/detalhesProduto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controlador de Mensagens</servlet-name>
+        <url-pattern>/Mensagem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Detalhes da empresa</servlet-name>
+        <url-pattern>/detalhesEmpresa</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>busca</servlet-name>
+        <url-pattern>/busca</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Responder mensagem</servlet-name>
+        <url-pattern>/ResponderMensagem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Enviar email para cliente</servlet-name>
+        <url-pattern>/EnviarEmail</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>geral</welcome-file>
+    </welcome-file-list>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error/404error.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error/500error.jsp</location>
+    </error-page>
+    <error-page>
+        <exception-type>NumberFormatException</exception-type>
+        <location>/error/NumberFormatExpcetion.jsp</location>
+    </error-page>
+    <error-page>
+        <exception-type>Exception</exception-type>
+        <location>/error/Exception.jsp</location>
+    </error-page>
+</web-app>
