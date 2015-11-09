@@ -17,15 +17,16 @@ public class ItemDAO {
 
     public void novoItem(Item item) throws Exception {
         //AQUI VAI O SQL PARA CADASTRAR UM NOVO PRODUTO NO BANCO
-        String sql = "INSERT INTO item (titulo, valor, descricao, imagem, codusuario) VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO item (titulo, valor, status, descricao, imagem, codusuario) VALUES(?,?,?,?,?,?)";
         con = ConnectionFactory.getConnection();
         ps = con.prepareStatement(sql);
 
         ps.setString(1, item.getTitulo());
         ps.setFloat(2, item.getValor());
-        ps.setString(3, item.getDescricao());
-        ps.setString(4, item.getImagem());
-        ps.setInt(5, item.getCodigoDono());
+        ps.setBoolean(3,item.getStatus());
+        ps.setString(4, item.getDescricao());
+        ps.setString(5, item.getImagem());
+        ps.setInt(6, item.getCodigoDono());
         ps.executeUpdate();
 
     }
@@ -45,6 +46,7 @@ public class ItemDAO {
             novoItem.setCodigo(result.getInt("coditem"));
             novoItem.setTitulo(result.getString("titulo"));
             novoItem.setValor(Float.parseFloat(result.getString("valor")));
+            novoItem.setStatus(Boolean.parseBoolean(result.getString("status")));
             novoItem.setDescricao(result.getString("descricao"));
             novoItem.setImagem(result.getString("imagem"));
             novoItem.setCodigoDono(Integer.parseInt(result.getString("codusuario")));
@@ -57,7 +59,7 @@ public class ItemDAO {
     public List getListaDeItensNovos() throws Exception {
         List lista = new ArrayList();
 
-        String sql = "SELECT * FROM item;";
+        String sql = "SELECT * FROM item where status = true;";
 
         con = ConnectionFactory.getConnection();
         ps = con.prepareStatement(sql);
@@ -69,6 +71,31 @@ public class ItemDAO {
             novoItem.setCodigo(result.getInt("coditem"));
             novoItem.setTitulo(result.getString("titulo"));
             novoItem.setValor(Float.parseFloat(result.getString("valor")));
+            novoItem.setStatus(Boolean.parseBoolean(result.getString("status")));
+            novoItem.setDescricao(result.getString("descricao"));
+            novoItem.setImagem(result.getString("imagem"));
+            novoItem.setCodigoDono(Integer.parseInt(result.getString("codusuario")));
+
+            lista.add(novoItem);
+        }
+        return lista;
+    }
+    public List getListaDeItensUsados() throws Exception {
+        List lista = new ArrayList();
+
+        String sql = "SELECT * FROM item where status = false;";
+
+        con = ConnectionFactory.getConnection();
+        ps = con.prepareStatement(sql);
+
+        ResultSet result = ps.executeQuery();
+        while (result.next()) {
+            Item novoItem = new Item();
+
+            novoItem.setCodigo(result.getInt("coditem"));
+            novoItem.setTitulo(result.getString("titulo"));
+            novoItem.setValor(Float.parseFloat(result.getString("valor")));
+            novoItem.setStatus(Boolean.parseBoolean(result.getString("status")));
             novoItem.setDescricao(result.getString("descricao"));
             novoItem.setImagem(result.getString("imagem"));
             novoItem.setCodigoDono(Integer.parseInt(result.getString("codusuario")));
@@ -93,6 +120,7 @@ public class ItemDAO {
             novoItem.setCodigo(result.getInt("coditem"));
             novoItem.setTitulo(result.getString("titulo"));
             novoItem.setValor(Float.parseFloat(result.getString("valor")));
+            novoItem.setStatus(Boolean.parseBoolean(result.getString("status")));
             novoItem.setDescricao(result.getString("descricao"));
             novoItem.setImagem(result.getString("imagem"));
             novoItem.setCodigoDono(Integer.parseInt(result.getString("codusuario")));
@@ -131,6 +159,7 @@ public class ItemDAO {
             novoItem.setCodigo(result.getInt("coditem"));
             novoItem.setTitulo(result.getString("titulo"));
             novoItem.setValor(Float.parseFloat(result.getString("valor")));
+            novoItem.setStatus(Boolean.parseBoolean(result.getString("status")));
             novoItem.setDescricao(result.getString("descricao"));
             novoItem.setImagem(result.getString("imagem"));
             novoItem.setCodigoDono(Integer.parseInt(result.getString("codusuario")));

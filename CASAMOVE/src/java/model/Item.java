@@ -6,17 +6,19 @@ public class Item {
     private int codigoDono;
     private String titulo;
     private float valor;
+    private boolean status;
     private String descricao;
     private String imagem;
 
     public Item() {
     }
 
-    public Item(int codigo, int codigoDono, String titulo, float valor, String descricao, String imagem) {
+    public Item(int codigo, int codigoDono, String titulo, float valor, boolean status, String descricao, String imagem) {
         this.codigo = codigo;
         this.codigoDono = codigoDono;
         this.titulo = titulo;
         this.valor = valor;
+        this.status = status;
         this.descricao = descricao;
         this.imagem = imagem;
     }
@@ -51,6 +53,14 @@ public class Item {
 
     public void setValor(float valor) {
         this.valor = valor;
+    }
+
+    public boolean getStatus(){
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public String getDescricao() {

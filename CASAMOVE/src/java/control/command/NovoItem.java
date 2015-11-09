@@ -78,8 +78,11 @@ public class NovoItem extends HttpServlet {
         String titulo = "";
         String descricao = "";
         float valor = 0;
+        boolean status = true;
         String caminhoImagem = "";
 
+       
+        
         DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
         //fileItemFactory.setSizeThreshold(1 * 1024 * 1024); //1 MB // Para limitar Tamanho máximo
         fileItemFactory.setRepository(tmpDir);
@@ -98,6 +101,9 @@ public class NovoItem extends HttpServlet {
                     } else if ("valoritem".equals(item.getFieldName())) {
                         valor = Float.parseFloat(item.getString());
                     }
+                     else if ("statusitem".equals(item.getFieldName())){
+                        status = Boolean.parseBoolean(item.getString());
+                    }
                 } else {
                     File file = new File(destinationDir, item.getName());
                     item.write(file);
@@ -109,11 +115,12 @@ public class NovoItem extends HttpServlet {
         }
         try {
             Item novoItem = new Item();
-
+                
             novoItem.setCodigoDono(codigo);
             novoItem.setDescricao(descricao);
             novoItem.setTitulo(titulo);
             novoItem.setValor(valor);
+            novoItem.setStatus(status);
             novoItem.setImagem(caminhoImagem);
 
             ItemDAO novoItemDAO = new ItemDAO();

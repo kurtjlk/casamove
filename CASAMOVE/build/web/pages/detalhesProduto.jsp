@@ -61,6 +61,16 @@ ${warningMessage}
                                     <span>Descrição:</span>
                                     <strong>${item.descricao}</strong>
                                     <div style="clear: both;">&nbsp;</div>
+                                    <span>
+                                        
+                                            <c:if test="${item.status == true}">
+                                                <strong>Produto Novo</strong>
+                                            </c:if>
+                                            <c:if test="${item.status == false}">
+                                                <strong>Produto Usado</strong>
+                                            </c:if>
+                                    </span>
+                                    <div style="clear: both;">&nbsp;</div>
                                     <span>Anunciado por:</span>
                                     <a href="detalhesEmpresa?cod=${usuario.codigo}"><strong>${usuario.nome}</strong></a>
                                     <div style="clear: both;">&nbsp;</div>

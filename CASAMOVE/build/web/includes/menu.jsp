@@ -28,7 +28,7 @@
                     <a href="novos">Novos</a>
                 </li>
                 <li>
-                    <a href="#">Usados</a>
+                    <a href="usados">Usados</a>
                 </li>
 
                 <c:choose>

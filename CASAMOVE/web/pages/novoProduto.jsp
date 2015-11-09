@@ -52,7 +52,7 @@
                                         </label>
                                         <label for="istatus">
                                             <br/>
-                                                <input type="checkbox" name="status" value="status" id="istatus" required>Produto usado.
+                                                <input type="checkbox" name="statusitem" value="status" id="istatus">Produto usado.
                                         </label>
                                         <div style="clear: both;"></div>
                                         <div style="clear: both;"></div>

@@ -29,10 +29,16 @@
                 </library>
                 <library dirs="200">
                     <file>${libs.action.classpath}</file>
+                </library>
+                <library dirs="200">
+                    <file>${libs.commomail.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
                     <file>${libs.Comm.classpath}</file>
+                </library>
+                <library dirs="200">
+                    <file>${libs.Activ.classpath}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
